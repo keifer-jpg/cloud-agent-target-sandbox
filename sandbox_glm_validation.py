@@ -24,3 +24,14 @@ def chunk(items, size):
     if size < 1:
         raise ValueError(f"size ({size}) must be >= 1")
     return [items[i:i + size] for i in range(0, len(items), size)]
+
+
+def dedupe_preserve_order(items):
+    """Return *items* with duplicates removed, preserving first-seen order."""
+    seen = set()
+    result = []
+    for item in items:
+        if item not in seen:
+            seen.add(item)
+            result.append(item)
+    return result
