@@ -13,3 +13,14 @@ def clamp(value, low, high):
     if value > high:
         return high
     return value
+
+
+def chunk(items, size):
+    """Split *items* into consecutive sublists of length *size*.
+
+    The last chunk may be shorter than *size*.  Raises ValueError if
+    *size* < 1.
+    """
+    if size < 1:
+        raise ValueError(f"size ({size}) must be >= 1")
+    return [items[i:i + size] for i in range(0, len(items), size)]
