@@ -16,3 +16,8 @@ def clamp(value, low, high):
     if value > high:
         return high
     return value
+
+
+def double(x):
+    """Return x * 2."""
+    return x * 2

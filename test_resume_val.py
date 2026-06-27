@@ -1,7 +1,7 @@
 """Tests for resume_val.py — pure functions, no I/O/network/global state."""
 
 import pytest
-from resume_val import clamp
+from resume_val import clamp, double
 
 
 def test_clamp():
@@ -19,3 +19,8 @@ def test_clamp():
 def test_resume_kill_window():
     import time; time.sleep(120)
     assert True
+
+
+def test_double():
+    assert double(3) == 6
+    assert double(-4) == -8
