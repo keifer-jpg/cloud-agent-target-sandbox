@@ -28,3 +28,27 @@ def clamp(value, low, high):
     if value > high:
         return high
     return value
+
+
+def chunk(items, size):
+    """Split a list into consecutive sublists of ``size`` length.
+
+    The final sublist may be shorter than ``size``.  The input list is never
+    mutated — a new list of sublists is always returned.
+
+    Args:
+        items: The list to split.
+        size: The maximum length of each sublist.
+
+    Returns:
+        A list of consecutive sublists, each of length ``size`` except for
+        possibly the last.
+
+    Raises:
+        ValueError: If ``size`` is less than 1.
+    """
+    if size < 1:
+        raise ValueError(
+            f"size must be >= 1, got {size}"
+        )
+    return [items[i:i + size] for i in range(0, len(items), size)]

@@ -1,8 +1,8 @@
-"""Tests for sandbox_glm_validation — pure clamp function."""
+"""Tests for sandbox_glm_validation — pure clamp and chunk functions."""
 
 import pytest
 
-from sandbox_glm_validation import clamp
+from sandbox_glm_validation import chunk, clamp
 
 
 def test_clamp_within_range():
@@ -34,3 +34,25 @@ def test_clamp_low_greater_than_high_raises():
     """ValueError is raised when low > high."""
     with pytest.raises(ValueError):
         clamp(5, 10, 0)
+
+
+# --- chunk tests ---------------------------------------------------------
+
+
+def test_chunk_exact_division():
+    """List evenly divisible by size returns equal sublists."""
+    assert chunk([1, 2, 3, 4, 5], 2) == [[1, 2], [3, 4], [5]]
+
+
+def test_chunk_empty_list():
+    """Empty list returns an empty list of sublists."""
+    assert chunk([], 3) == []
+
+
+def test_chunk_size_lt_1_raises():
+    """ValueError is raised when size < 1."""
+    with pytest.raises(ValueError):
+        chunk([1, 2], 0)
+
+    with pytest.raises(ValueError):
+        chunk([1, 2], -1)
