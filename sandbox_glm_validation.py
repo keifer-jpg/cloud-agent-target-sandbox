@@ -52,3 +52,24 @@ def chunk(items, size):
             f"size must be >= 1, got {size}"
         )
     return [items[i:i + size] for i in range(0, len(items), size)]
+
+
+def dedupe_preserve_order(items):
+    """Return the input list with duplicates removed, preserving first-seen order.
+
+    The input list is never mutated — a new list is always returned.
+
+    Args:
+        items: The list to deduplicate.
+
+    Returns:
+        A new list with duplicates removed, keeping only the first occurrence
+        of each value.
+    """
+    seen = set()
+    result = []
+    for item in items:
+        if item not in seen:
+            seen.add(item)
+            result.append(item)
+    return result
