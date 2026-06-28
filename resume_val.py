@@ -13,3 +13,8 @@ def clamp(value, low, high):
     if low > high:
         raise ValueError(f"low ({low}) must be <= high ({high})")
     return max(low, min(value, high))
+
+
+def double(x):
+    """Return `x` multiplied by 2."""
+    return x * 2
