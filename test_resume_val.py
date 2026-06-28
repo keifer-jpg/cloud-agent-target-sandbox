@@ -14,3 +14,8 @@ def test_clamp():
     # invalid range raises ValueError
     with pytest.raises(ValueError):
         clamp(1, 5, 0)
+
+
+def test_resume_kill_window():
+    import time; time.sleep(120)
+    assert True
